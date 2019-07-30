@@ -16,7 +16,10 @@ prototype 객체는 같은 생성자로부터 만들어진 객체들은 모두 �
 Person의 prototype 객체에 sayHello라는 메소드를 넣으면 Person 생성자로 만든 모든 객체는 이 메소드를 사용이 가능합니다.
 공유하고 있기 때문입니다.
 */
+/* 생성자 함수 */
+/* 생성자 함수 안에서 즉시 호출 함수 표현식을 통해 비공개 변수를 사용하는 패턴으로 private 클래스를 구현한다.*/
 var LinkedList = (function(){
+    // new LinkedList() 하면 실행되는 생성자 함수
     function LinkedList(){
         this.length = 0;
         this.head = null;
@@ -25,6 +28,7 @@ var LinkedList = (function(){
         this.data = data;
         this.next = null;
     };
+    // LinkedList 끼리는 prototype을 통해 add를 공유
     LinkedList.prototype.add = function(value){
         var node = new Node(value);
         var current = this.haed;
