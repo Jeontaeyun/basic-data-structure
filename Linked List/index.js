@@ -98,3 +98,5 @@ linkedlist.remove(3);
 console.log(linkedlist.length);
 
 console.log(linkedlist.search(3));
+
+// 연격리스트 구현 완료
