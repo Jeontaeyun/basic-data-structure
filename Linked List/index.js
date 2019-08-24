@@ -91,7 +91,7 @@ linkedlist.add(4);
 linkedlist.add(2);
 linkedlist.add(1);
 
-console.log(linkedlist.length);
+console.log(linkedlist);
 
 linkedlist.remove(3);
 

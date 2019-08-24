@@ -11,7 +11,8 @@ var Queue = (function(){
     Queue.prototype.enq = function(data){
         const node = new Node(data);
         // node는 하나의 캡슐로 이를 참조하는 하나의 변수가 바끼면 다른 값에서의 값도 바뀐다.
-        // Constructor을 통해서
+        // 자바스크립트의 객체는 메모리 주소를 변수명에 저장해주기 때문에, 해당 객체를 변수에 할당하여도 
+        // 내부적인 속성을 공유한다. (Shallow Copy)
         if(!this.head){
             this.head = node;               // this.head => node 1
         }
