@@ -18,7 +18,7 @@ var Queue = (function(){
         }
         else {                              // this.head가 있다면, 2번째 이후 부터
             this.rear.next = node;          // 시작할 때 넣은 rear의 next에 새로운 node를 넣어 head1 -> node1 -> node2 -> node3 <- rear 구조를 만든다.
-        }
+        }                                   // head => node1 => node2 <=rear 의 구조로 데이터가 늘어나는 구조
         this.rear = node;                   // 시작할 때는 head와 rear에 모두 node가 들어가 있다.
         return ++ this.count;
     };
@@ -27,12 +27,24 @@ var Queue = (function(){
             return false;
         }
         const data = this.head.data;
-        this.head = this.head.next;
-        --this.count;
+        this.head = this.head.next;         // head => node1 => node2 => node3 <= rear 순서이기에 node1의  
         return data;
     };
-    Queue.prototype.frontData = function(){
+    Queue.prototype.front = function(){
         return this.head && this.head.data;
+        //retunr this.rear.next = this.haed로 구현할 수 있습니다. 
     };
     return Queue;
 })();
+
+const que = new Queue();
+
+console.log(que.enq(1));
+console.log(que.enq(2));
+console.log(que.enq(3));
+console.log(que.enq(4));
+console.log(que.enq(5));
+console.log(que.deq());
+console.log(que.deq());
+console.log(que.deq());
+console.log(que.deq());

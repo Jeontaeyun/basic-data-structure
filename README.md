@@ -55,8 +55,8 @@ Stack Underflow| 스택에 주어진 데이터보다 더 많은 데이터를 끄
 
  구분     | 설명
  ------- | ---------
- enqueue | 큐에서 데이터를 맨 뒤에 넣는 동작을 enqueue라고 합니다.
- dequeue | 큐에서 앞의 데이터를 빼는 동작을 dequeue라고 합니다.
+ enqueue | 큐에서 데이터를 맨 뒤에 넣는 동작을 enqueue라고 합니다.(push)
+ dequeue | 큐에서 앞의 데이터를 빼는 동작을 dequeue라고 합니다.(shift)
 
 ## 자료구조에 대한 고찰
 
