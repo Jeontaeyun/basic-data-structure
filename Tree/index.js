@@ -59,30 +59,36 @@ const binarySearchTree = (function(){
         }else return null;
     };
     /*
-    삭제의 3가지 꼉우의 수
+    삭제의 3가지 경우의 수
     01. 왼쪽 자식 노드가 없을 때
     02. 오른쪽 자식 노드가 없을 때
     03. 그리고 왼쪽, 오른쪽 자식 노드 둘 다 있을 때
     이진 검색 트리의 삭제 기능은 노드의 자식 위치와 개수에 따라 분기 처리를 해주어야 해서 조금 더 복잡한 감이 있습니다. 
     */
     function _remove(root, data){
-        const newRoot, exChange, temp;
+        let newRoot, exChange, temp;
         if(!root) return false;
         if(data < root.data){
             root.left = _remove(root.left, data);
         } else if (data > root.data){
             root.right = _remove(root.right, data);
         } else {
+            // 데이터를 찾고 root.left가 null이면 root.right의 값을 그 위 루트에 붙인다. 
             if(!root.left){
                 newRoot = root.right;
                 return newRoot;
+            // 데이터를 찾고 root.right가 null이면 root.left의 값을 극 위의 루트에 붙인다.
             } else if(!root.right){
                 newRoot = root.left;
                 return newRoot;
+            // 지워야하는 노드의 right과 left가 모두 있을 경우, 해당 노드의 왼쪽 노드 중 가장 큰 값을 가지는 값과 sub root를 바꾼 후 해당 작업을 반복합니다. 
             } else {
                 exChange = root.left;
+                // 맨 오른쪽 값이 가장 큰 값이므로 exChnage가 가장 큰 값을 가지는 노드 까지 간다.
                 while(exChange.right) exChange = exChange.right;
+                // 해당 루트의 데이터를 임시 저장한다.
                 temp = root.data;
+                // root의 데이터를 가장 큰 값으로 바꾼다.
                 root.data = exChange.data;
                 exChange.data= temp;
                 root.left = _remove(root.left, exChange.data);

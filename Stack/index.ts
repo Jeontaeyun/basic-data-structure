@@ -1,13 +1,14 @@
-const Stack = (function () : any {
+// 타입스크립트는 자바와 비슷하게 클래스를 사용할 수 있으며 private, public등의 멤버 변수에 대한 조건을 정할 수 있다.
+const Stack = (function (){
     // new LinkedList() 하면 실행되는 생성자 함수
-    function Stack() {
-        this.top = null;
+    function Stack() : void {
+        this.top = undefined;
         this.count = 0;
     }
     ;
-    function Node(data : Number) {
+    function Node(data : Number) : void {
         this.data = data;
-        this.next = null;
+        this.next = undefined;
     }
     ;
     // LinkedList 끼리는 prototype을 통해 add를 공유
