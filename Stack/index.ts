@@ -1,39 +1,39 @@
-var Stack = (function () {
+const Stack = (function () : any {
     // new LinkedList() 하면 실행되는 생성자 함수
     function Stack() {
         this.top = null;
         this.count = 0;
     }
     ;
-    function Node(data) {
+    function Node(data : Number) {
         this.data = data;
         this.next = null;
     }
     ;
     // LinkedList 끼리는 prototype을 통해 add를 공유
-    Stack.prototype.push = function (value) {
+    Stack.prototype.push = function (value : Number) : Number {
         var node = new Node(value);
         node.next = this.top;
         this.top = node;
         return ++this.count;
     };
-    Stack.prototype.pop = function () {
+    Stack.prototype.pop = function () : Boolean | Number {
         if(!this.top) {
             return false;                   //Stack underflow
         }
-        var data = this.top.data;
+        const data : Number = this.top.data;
         this.top = this.top.next;
         // this.top을 다음 노드로 지정
         this.count--;
         return data;
     };
-    Stack.prototype.stackTop = function(){
+    Stack.prototype.stackTop = function() : Number{
         return this.top.data;
     };
     return Stack;
 })();
 
-var stack = new Stack();
+const stack : any = new Stack();
 
 stack.push(3);
 stack.push(2);
