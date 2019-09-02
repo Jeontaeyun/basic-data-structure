@@ -9,7 +9,7 @@ Longest Common Sequence(LCS)는 두 문자열에서 순서대로 겹치는 문�
                        lcs(i,j) = max(lcs(i-1,j),lcs(i,j-1)); (마지막 문자열이 다를 때)
 
 */
-type lcsFunc =  (first: string, second: string) => any ;
+type lcsFunc =  (first: string, second: string) => number ;
 const memoiz : number[] = [];
 const LCS : lcsFunc = function(first, second){
     let result : number[][] = [];
