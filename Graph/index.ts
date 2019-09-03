@@ -19,7 +19,7 @@ interface GraphClass {
     deleteArc(fromKey:string, toKey:string) : void;
     getVertex(key:string) : Vertex;
 }
-class Vertex {
+ class Vertex {
     public next : Vertex; 
     public arc : Arc;
     public key : string;
@@ -28,7 +28,7 @@ class Vertex {
         this.key = key;
     }
 }
-class Arc{
+ class Arc{
     public nextArc : Arc; 
     public destination : Vertex;
     // Arc의ㅣ 데이터는 나중에 가중치(weight)로 사용됩니다. 
@@ -44,7 +44,7 @@ class Arc{
     }
 }
 
-class Graph implements GraphClass {
+ class Graph implements GraphClass {
     protected count : number;
     protected first : Vertex;
     constructor(){
@@ -130,6 +130,7 @@ class Graph implements GraphClass {
         return vertex;
     }
 }
+
 
 const graph = new Graph();
 graph.insertVertex("A");
