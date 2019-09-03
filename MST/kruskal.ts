@@ -121,8 +121,39 @@ namespace MstGraphKruskal{
     class MstGraph extends Graph{
     
             public mst() : void {
-                
+                // 사이클 테이블의 원리를 기억하자 
+                // 각 노드에 할당하는 값을 넣은 뒤 두 노드가 연결되면 같은 값을 가지게 만든다.
+                // 새로운 간선이 들어왔을 때 이미 두 노드가 같은 부모값을 가지면 사이클이 발생하는 것이다. 
+                let cycleTable = [];
+                let arcList = [];
+                let temp = this.first;
+                let i = 0;
+                let resultWeight : number = 0;
+                while(temp){
+                    let arc = temp.arc;
+                    while(arc){
+                        arcList.push({temp, arc});
+                        arc = arc.nextArc;
+                    }
+                    cycleTable[i++] = [temp.key, i];
+                    temp = temp.next;
+                }
+                arcList.sort((a,b)=>a.arc.data-b.arc.data);
+                for(let i = 0; i<arcList.length ; i ++){
+                    const {arc, temp} = arcList.shift();
+                    const [firstFactor] = cycleTable.filter(i => i[0] === temp.key);
+                    const [secondFactor] = cycleTable.filter(i=> i[0] === arc.destination.key);
+                    if(firstFactor[1] !== secondFactor[1]){
+                        secondFactor[1] = firstFactor[1];
+                        resultWeight += arc.data;
+                        console.log(`${temp.key}버텍스에서 ${arc.destination.key} 버텍스로 가는 가중치 ${arc.data} 아크 추가.`)
+                    }
+
+                    
+                }
+                console.log(`총 가중치는 ${resultWeight}입니다.`);
             };
+
             static insertTwoWayArc(graph: MstGraph, weight: number , fromKey: string, toKey: string) : void{
                 console.log(`MST그래프 가중치 설정:  ${weight}을 ${fromKey}에서 ${toKey}까지`);
                 graph.insertArc(weight, fromKey, toKey);
