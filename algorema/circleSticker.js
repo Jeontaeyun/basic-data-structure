@@ -4,6 +4,8 @@
 // - mem[i]는 i번 째 스티커를 뜯는 경우
 // - mem[i-2]+ sticker[i]와 mem[i-1]을 비교하여 해당 스티커 까지의 최대값을 메모이제이션함
 // 문제 점화식 : mem[i] = max (mem[i-1], mem[i-2]+ sticker[i]);
+// 문제 피드백
+// - DP문제는 점화식을 써서 풀어야한다는 점을 기억해두자.
 
 const solution = (sticker) => {
 	let answer;
