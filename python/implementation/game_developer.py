@@ -18,19 +18,29 @@ count_scan = 0
 
 memoization = []
 
-while True:
+
+def turn_left():
+    global count_scan
+    global current_direction
     count_scan += 1
     current_direction -= 1
     if current_direction == -1:
         current_direction = 3
 
+
+def check_is_block(row, column):
+    is_block_row = row < 0 or row >= n
+    is_block_column = column < 0 or column >= n
+
+    return is_block_row or is_block_column
+
+
+while True:
+    turn_left()
     next_row = current_position[0] + directions[current_direction][0]
     next_column = current_position[1] + directions[current_direction][1]
 
-    is_block_row = next_row < 0 or next_row >= n
-    is_block_column = next_column < 0 or next_column >= n
-
-    if is_block_row or is_block_column:
+    if check_is_block(next_row, next_column):
         continue
 
     if not (next_row, next_column) in memoization and map_data[next_row][next_column] == 0:
@@ -42,10 +52,7 @@ while True:
         back_row = current_position[0] - directions[current_direction][0]
         back_column = current_position[1] - directions[current_direction][1]
 
-        is_back_block_row = back_row < 0 or back_row >= n
-        is_back_block_column = back_column < 0 or back_column >= n
-
-        if is_block_row or is_block_column:
+        if check_is_block(back_row, back_column):
             continue
         if not map_data[back_row][back_column] == 1:
             break
