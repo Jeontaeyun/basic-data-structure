@@ -31,7 +31,7 @@ def union_parent(parrent, a, b):
 
 def kruskal(array, parent):
     result = 0
-    sorted_array = sort_arch_with_cost(array)
+    sort_arch_with_cost(array)
     for data in array:
         if find_parent(parent, data[0]) == find_parent(parent, data[1]):
             print("사이클 발생")
